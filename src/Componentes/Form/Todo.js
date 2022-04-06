@@ -14,7 +14,7 @@ const Todo = (props) =>{
 
     const crearQuehacer = (event) => {
         event.preventDefault();     
-        setListaTodo((prev)=>  [...prev, {name: todo, completo: true}]);
+        setListaTodo((prev)=>  [...prev, {name: todo, completo: false}]);
         setTodo("");
     
     }

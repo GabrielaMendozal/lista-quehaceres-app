@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 
 const ListaTodo = (props) =>{
-    const {listaTodo, eliminarTodo} = props
+    const {listaTodo, eliminarTodo, cambiarEstadoTodo} = props
     
     
 
@@ -11,9 +11,11 @@ const ListaTodo = (props) =>{
         {
                           listaTodo.map((todo, index) => {
                             return(
-                              <div key={'todo_' + index}>{todo.name} 
-                                <input type='checkbox' name="checkbox" value={todo.completo}/>
-                                <button type='submit' onClick={e=>eliminarTodo(todo.name)}>Delete</button>
+                              <div key={'todo_' + index}><span className={todo.completo && "subrayado"
+                            }>{todo.name}</span> 
+                                <input type='checkbox' name="checkbox" checked={todo.completo} 
+                                onClick={e=>cambiarEstadoTodo(todo.name)}/>
+                                <button type='submit' onClick={e=>eliminarTodo(todo.name, todo.completo)}>Delete</button>
                               </div>
                             )
                           } )
