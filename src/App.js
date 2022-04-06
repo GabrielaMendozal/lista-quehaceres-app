@@ -1,23 +1,24 @@
-import logo from './logo.svg';
+
+import  { useState } from  'react';
+import Todo from './Componentes/Form/Todo'
 import './App.css';
+import ListaTodo from './Componentes/Form/ListaTodo';
 
 function App() {
+  
+  const [listaTodo, setListaTodo] =useState([]);
+
+  const eliminarTodo = (name) =>{
+    setListaTodo ((prev)=>  prev.filter(todo => todo.name !== name ));
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Todo setListaTodo={setListaTodo}   />
+      <ListaTodo listaTodo={listaTodo} eliminarTodo={eliminarTodo}/>
+      
+      
+      
     </div>
   );
 }
